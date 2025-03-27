@@ -1,0 +1,20 @@
+dev/
+├─ app/
+│  ├─ (tabs)/
+│  │  ├─ _layout.tsx
+│  │  ├─ charts.tsx
+│  │  ├─ index.tsx
+│  │  └─ settings.tsx
+│  └─ _layout.tsx
+├─ assets/
+│  └─ images/
+│     ├─ favicon.png
+│     └─ icon.png
+├─ constants/
+│  ├─ color.ts
+│  └─ theme.ts
+├─ contexts/
+│  ├─ api/
+│  │  └─ useAppStore.ts
+│  └─ themeContext.tsx
+├─ hooks/

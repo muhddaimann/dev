@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useTheme } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChartBar as Home, BarChart2, Settings } from 'lucide-react-native';
+import { ChartBar, Settings } from 'lucide-react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function TabLayout() {
@@ -9,7 +9,7 @@ export default function TabLayout() {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: theme.colors.background }}
+      style={{ flex: 1, backgroundColor: theme.colors.surface }}
       edges={['top', 'left', 'right']}
     >
       <Tabs
@@ -30,14 +30,7 @@ export default function TabLayout() {
           name="index"
           options={{
             title: 'Home',
-            tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
-          }}
-        />
-        <Tabs.Screen
-          name="charts"
-          options={{
-            title: 'Charts',
-            tabBarIcon: ({ color, size }) => <BarChart2 size={size} color={color} />,
+            tabBarIcon: ({ color, size }) => <ChartBar size={size} color={color} />,
           }}
         />
         <Tabs.Screen
