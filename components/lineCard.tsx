@@ -40,7 +40,7 @@ export default function LineCard() {
               backgroundGradientFrom: theme.colors.surface,
               backgroundGradientTo: theme.colors.surface,
               decimalPlaces: 0,
-              color: (opacity = 1) => theme.colors.primary + Math.floor(opacity * 255).toString(16),
+              color: (opacity = 1) => theme.colors.secondary + Math.floor(opacity * 255).toString(16),
               labelColor: () => theme.colors.onSurface,
               propsForDots: {
                 r: '4',
