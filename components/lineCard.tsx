@@ -3,7 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import { Button, Card, Text, useTheme } from 'react-native-paper';
 import { useAppStore } from '@/contexts/api/useAppStore';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export default function LineCard() {
   const theme = useTheme();
@@ -17,7 +20,12 @@ export default function LineCard() {
   };
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
+    <Card
+      style={[
+        styles.card,
+        { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow },
+      ]}
+    >
       <Card.Content>
         {chartData.length > 0 ? (
           <LineChart
@@ -48,10 +56,20 @@ export default function LineCard() {
         )}
       </Card.Content>
       <View style={styles.buttonRow}>
-        <Button mode="contained" buttonColor={theme.colors.primary} onPress={addRandomData} style={styles.button}>
+        <Button
+          mode="contained"
+          buttonColor={theme.colors.primary}
+          onPress={addRandomData}
+          style={styles.button}
+        >
           Add Data
         </Button>
-        <Button mode="outlined" textColor={theme.colors.primary} onPress={clearData} style={styles.button}>
+        <Button
+          mode="outlined"
+          textColor={theme.colors.primary}
+          onPress={clearData}
+          style={styles.button}
+        >
           Clear
         </Button>
       </View>
@@ -60,9 +78,14 @@ export default function LineCard() {
 }
 
 const styles = StyleSheet.create({
-  card: { },
+  card: {},
   chart: { marginVertical: hp('1.5%'), borderRadius: 12, alignSelf: 'center' },
   noData: { textAlign: 'center', marginVertical: hp('4%'), fontSize: hp('2%') },
-  buttonRow: { flexDirection: 'row', gap: hp('1%'), paddingHorizontal: hp('1%'), marginBottom: hp('2%') },
+  buttonRow: {
+    flexDirection: 'row',
+    gap: hp('1%'),
+    paddingHorizontal: hp('1%'),
+    marginBottom: hp('2%'),
+  },
   button: { flex: 1, borderRadius: 8, height: hp('5.5%'), justifyContent: 'center' },
 });

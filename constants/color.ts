@@ -1,8 +1,8 @@
-export const Iron = ['#ECEFF1', '#607D8B', '#263238'];         // primary (steel blue tone)
-export const Lime = ['#F9FBE7', '#CDDC39', '#827717'];         // secondary (fresh/energy)
-export const Flame = ['#FFF3E0', '#F57C00', '#E65100'];        // tertiary (warm and bold)
-export const Blood = ['#FFEBEE', '#D32F2F', '#B71C1C'];        // error (deep red)
-export const Neutral = ['#FAFAFA', '#BDBDBD', '#212121'];      // surface
+export const Iron = ['#ECEFF1', '#607D8B', '#263238']; // primary (steel blue tone)
+export const Lime = ['#F9FBE7', '#CDDC39', '#827717']; // secondary (fresh/energy)
+export const Flame = ['#FFF3E0', '#F57C00', '#E65100']; // tertiary (warm and bold)
+export const Blood = ['#FFEBEE', '#D32F2F', '#B71C1C']; // error (deep red)
+export const Neutral = ['#FAFAFA', '#BDBDBD', '#212121']; // surface
 export const Snow = ['#FFFFFF'];
 export const Jet = ['#111111'];
 
@@ -77,4 +77,3 @@ export const DarkColors = {
   shadow: Snow[0],
   scrim: Iron[1],
 };
-

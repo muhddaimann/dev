@@ -6,9 +6,18 @@ export default function ActiveSession() {
   const theme = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.primaryContainer, shadowColor: theme.colors.shadow }]}>
-      <Text style={[styles.title, { color: theme.colors.onPrimaryContainer }]}>Active Sessions: 763</Text>
-      <Text style={[styles.subtitle, { color: theme.colors.onPrimaryContainer }]}>Uptime: 99.8%</Text>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: theme.colors.primaryContainer, shadowColor: theme.colors.shadow },
+      ]}
+    >
+      <Text style={[styles.title, { color: theme.colors.onPrimaryContainer }]}>
+        Active Sessions: 763
+      </Text>
+      <Text style={[styles.subtitle, { color: theme.colors.onPrimaryContainer }]}>
+        Uptime: 99.8%
+      </Text>
     </View>
   );
 }
