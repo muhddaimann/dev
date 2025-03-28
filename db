@@ -2,14 +2,15 @@ dev/
 ├─ app/
 │  ├─ (tabs)/
 │  │  ├─ _layout.tsx
-│  │  ├─ charts.tsx
 │  │  ├─ index.tsx
 │  │  └─ settings.tsx
 │  └─ _layout.tsx
 ├─ assets/
 │  └─ images/
-│     ├─ favicon.png
-│     └─ icon.png
+├─ components/
+│  ├─ activeSession.tsx
+│  ├─ lineCard.tsx 
+│  └─ totalUser.tsx
 ├─ constants/
 │  ├─ color.ts
 │  └─ theme.ts
@@ -18,3 +19,4 @@ dev/
 │  │  └─ useAppStore.ts
 │  └─ themeContext.tsx
 ├─ hooks/
+

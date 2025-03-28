@@ -8,8 +8,7 @@ export default function Settings() {
   const theme = useTheme();
   const { isDarkMode, toggleTheme } = useToggle();
   const [notifications, setNotifications] = useState(false);
-  const [dataSync, setDataSync] = useState(true);
-
+  
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <List.Section style={styles.section}>
@@ -30,13 +29,6 @@ export default function Settings() {
           titleStyle={{ color: theme.colors.onSurface }}
           right={() => (
             <Switch value={notifications} onValueChange={setNotifications} />
-          )}
-        />
-        <List.Item
-          title="Data Sync"
-          titleStyle={{ color: theme.colors.onSurface }}
-          right={() => (
-            <Switch value={dataSync} onValueChange={setDataSync} />
           )}
         />
       </List.Section>

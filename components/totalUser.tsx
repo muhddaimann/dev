@@ -6,9 +6,9 @@ export default function TotalUser() {
   const theme = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
-      <Text style={[styles.title, { color: theme.colors.onSurface }]}>Total Users: 1,245</Text>
-      <Text style={[styles.subtitle, { color: theme.colors.onSurface }]}>New this week: 128</Text>
+    <View style={[styles.container, { backgroundColor: theme.colors.primaryContainer, shadowColor: theme.colors.shadow }]}>
+      <Text style={[styles.title, { color: theme.colors.onPrimaryContainer }]}>Total Users: 1,245</Text>
+      <Text style={[styles.subtitle, { color: theme.colors.onPrimaryContainer }]}>New this week: 128</Text>
     </View>
   );
 }
