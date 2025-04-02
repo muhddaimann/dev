@@ -20,11 +20,11 @@ export default function Home() {
       <View style={[styles.header, { backgroundColor: theme.colors.surface }]}>
         <View>
           <Text style={[styles.greetingText, { color: theme.colors.onSurface }]}>Welcome back,</Text>
-          <Text style={[styles.userName, { color: theme.colors.primary }]}>Vivian</Text>
+          <Text style={[styles.userName, { color: theme.colors.primary }]}>Muhd Aiman</Text>
         </View>
         <Avatar.Text
           size={hp('6%')}
-          label="V"
+          label="MA"
           style={{ backgroundColor: theme.colors.primary }}
           labelStyle={{ color: 'white' }}
         />
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   greetingText: { fontSize: hp('2%'), fontWeight: '400', marginBottom: hp('0.5%') },
   userName: { fontSize: hp('2.2%'), fontWeight: '700' },
   row: { flexDirection: 'column', marginTop: hp('1%') },
-  rows: { flexDirection: 'row', gap: hp('1%'), marginTop: hp('1%') },
+  rows: { flexDirection: 'row', gap: hp('1%') },
   columnA: { flex: 2, borderRadius: hp('1%') },
   columnB: { flex: 3, borderRadius: hp('1%') },
   card: { padding: wp('2%'), borderRadius: hp('1%') },

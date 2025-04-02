@@ -50,10 +50,11 @@ export default function CardCarousel() {
 }
 
 const styles = StyleSheet.create({
-  container: { overflow: 'visible' },
-  pager: { height: hp('15%'), width: wp('100%'), overflow: 'visible' },
-  page: { alignItems: 'center', justifyContent: 'center' },
-  card: { width: wp('80%'), borderRadius: hp('2%'), padding: wp('3%') },
+  container: { alignItems: 'center', justifyContent: 'center', paddingBottom: hp('1%') },
+  pager: { height: hp('15%'), width: wp('100%') },
+  page: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: wp('2%') },
+  card: { width: wp('85%'), borderRadius: hp('2%'), padding: wp('4%'), minHeight: hp('10%'), justifyContent: 'center' },
   title: { fontSize: hp('2.2%'), fontWeight: '600' },
-  text: { fontSize: hp('1.8%'), fontWeight: '400', marginTop: hp('0.5%') },
+  text: { fontSize: hp('1.8%'), fontWeight: '400', marginTop: wp('1%') },
 });
+
