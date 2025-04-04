@@ -50,7 +50,7 @@ export default function CardCarousel() {
 }
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center', justifyContent: 'center', paddingBottom: hp('1%') },
+  container: { alignItems: 'center', justifyContent: 'center' },
   pager: { height: hp('15%'), width: wp('100%') },
   page: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: wp('2%') },
   card: { width: wp('85%'), borderRadius: hp('2%'), padding: wp('4%'), minHeight: hp('10%'), justifyContent: 'center' },

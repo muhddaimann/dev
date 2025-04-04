@@ -1,15 +1,18 @@
-import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { Slot } from 'expo-router';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import { PaperProvider } from 'react-native-paper';
 import { ThemeProvider, useToggle } from '@/contexts/themeContext';
+import { AuthProvider } from '@/contexts/authContext';
 
 export default function RootLayout() {
   useFrameworkReady();
 
   return (
     <ThemeProvider>
-      <MainApp />
+      <AuthProvider>
+        <MainApp />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
@@ -19,9 +22,7 @@ function MainApp() {
 
   return (
     <PaperProvider theme={theme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-      </Stack>
+      <Slot />
       <StatusBar style={isDarkMode ? 'light' : 'dark'} />
     </PaperProvider>
   );

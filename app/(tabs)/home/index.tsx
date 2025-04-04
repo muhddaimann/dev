@@ -35,8 +35,8 @@ export default function Home() {
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.row}><WelcomeCard /></View>
         <View style={styles.row}><CardCarousel /></View>
+        <View style={styles.row}><WelcomeCard /></View>
         <View style={styles.rows}>
           <View style={styles.columnA}><MembersCard /></View>
           <View style={styles.columnB}><SessionsCard /></View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   greetingText: { fontSize: hp('2%'), fontWeight: '400', marginBottom: hp('0.5%') },
   userName: { fontSize: hp('2.2%'), fontWeight: '700' },
   row: { flexDirection: 'column', marginTop: hp('1%') },
-  rows: { flexDirection: 'row', gap: hp('1%') },
+  rows: { flexDirection: 'row', gap: hp('1%'), marginTop: hp('1%') },
   columnA: { flex: 2, borderRadius: hp('1%') },
   columnB: { flex: 3, borderRadius: hp('1%') },
   card: { padding: wp('2%'), borderRadius: hp('1%') },

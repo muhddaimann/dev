@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useTheme } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChartBar, Settings } from 'lucide-react-native';
+import { Home, CheckCircle, Compass, User } from 'lucide-react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function TabLayout() {
@@ -27,17 +27,31 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="index"
+          name="home"
           options={{
             title: 'Home',
-            tabBarIcon: ({ color, size }) => <ChartBar size={size} color={color} />,
+            tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
           }}
         />
         <Tabs.Screen
-          name="settings"
+          name="checklist"
           options={{
-            title: 'Settings',
-            tabBarIcon: ({ color, size }) => <Settings size={size} color={color} />,
+            title: 'Checklist',
+            tabBarIcon: ({ color, size }) => <CheckCircle size={size} color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="explore"
+          options={{
+            title: 'Explore',
+            tabBarIcon: ({ color, size }) => <Compass size={size} color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: 'Profile',
+            tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
           }}
         />
       </Tabs>

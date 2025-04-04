@@ -1,22 +1,67 @@
-dev/
+gym/
 ├─ app/
 │  ├─ (tabs)/
 │  │  ├─ _layout.tsx
-│  │  ├─ index.tsx
-│  │  └─ settings.tsx
-│  └─ _layout.tsx
+│  │  ├─ home/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ checklist/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ explore/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  └─ profile/
+│  │     └─ index.tsx
+│  ├─ _layout.tsx
+│  ├─ index.tsx
+
+budget/
+├─ app/
+│  ├─ (tabs)/
+│  │  ├─ _layout.tsx
+│  │  ├─ home/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ transaction/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ trend/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  └─ profile/
+│  │     └─ index.tsx
+│  ├─ auth/
+│  │  └─ index.tsx
+│  ├─ _layout.tsx
+
+dev/
+├─ app/
+│  ├─ (tabs)/
+│  │  ├─ checklist/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ explore/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ home/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  ├─ profile/
+│  │  │  ├─ _layout.tsx
+│  │  │  └─ index.tsx
+│  │  └─ _layout.tsx
+│  ├─ auth/
+│  │  ├─ goodbye.tsx
+│  │  └─ welcome.tsx
+│  ├─ _layout.tsx
+│  └─ index.tsx
 ├─ assets/
-│  └─ images/
 ├─ components/
-│  ├─ activeSession.tsx
-│  ├─ lineCard.tsx 
-│  └─ totalUser.tsx
 ├─ constants/
-│  ├─ color.ts
-│  └─ theme.ts
 ├─ contexts/
 │  ├─ api/
-│  │  └─ useAppStore.ts
+│  ├─ authContext.tsx
 │  └─ themeContext.tsx
 ├─ hooks/
 
