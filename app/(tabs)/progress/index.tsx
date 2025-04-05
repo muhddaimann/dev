@@ -11,7 +11,7 @@ const initialExercises = [
   { id: 5, name: 'Lunges', completed: false },
 ];
 
-export default function Checklist() {
+export default function Progress() {
   const theme = useTheme();
   const [exercises, setExercises] = useState(initialExercises);
 

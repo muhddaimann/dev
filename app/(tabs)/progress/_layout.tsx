@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack } from 'expo-router';
 import { useTheme } from 'react-native-paper';
 
-export default function ChecklistLayout() {
+export default function ProgressLayout() {
   const theme = useTheme();
 
   return (

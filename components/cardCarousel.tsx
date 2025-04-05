@@ -36,10 +36,10 @@ export default function CardCarousel() {
       >
         {data.map((item, index) => (
           <View key={index} style={styles.page}>
-            <Card style={[styles.card, { backgroundColor: theme.colors.secondaryContainer, shadowColor: theme.colors.shadow }]}>
+            <Card style={[styles.card, { backgroundColor: theme.colors.primaryContainer, shadowColor: theme.colors.shadow }]}>
               <Card.Content>
-                <Title style={[styles.title, { color: theme.colors.onSecondaryContainer }]}>{item.title}</Title>
-                <Paragraph style={[styles.text, { color: theme.colors.onSecondaryContainer }]}>{item.desc}</Paragraph>
+                <Title style={[styles.title, { color: theme.colors.onPrimaryContainer }]}>{item.title}</Title>
+                <Paragraph style={[styles.text, { color: theme.colors.onPrimaryContainer }]}>{item.desc}</Paragraph>
               </Card.Content>
             </Card>
           </View>
@@ -51,10 +51,10 @@ export default function CardCarousel() {
 
 const styles = StyleSheet.create({
   container: { alignItems: 'center', justifyContent: 'center' },
-  pager: { height: hp('15%'), width: wp('100%') },
+  pager: { height: hp('14%'), width: wp('100%') },
   page: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: wp('2%') },
-  card: { width: wp('85%'), borderRadius: hp('2%'), padding: wp('4%'), minHeight: hp('10%'), justifyContent: 'center' },
-  title: { fontSize: hp('2.2%'), fontWeight: '600' },
-  text: { fontSize: hp('1.8%'), fontWeight: '400', marginTop: wp('1%') },
+  card: { width: wp('88%'), borderRadius: hp('2%'), padding: wp('3%'), minHeight: hp('10%'), justifyContent: 'center' },
+  title: { fontSize: hp('2.0%'), fontWeight: '600' },
+  text: { fontSize: hp('1.7%'), fontWeight: '400', marginTop: wp('1%') },
 });
 

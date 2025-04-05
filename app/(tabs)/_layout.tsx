@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useTheme } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Home, CheckCircle, Compass, User } from 'lucide-react-native';
+import { Home, BarChart3, Compass, User } from 'lucide-react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function TabLayout() {
@@ -34,10 +34,10 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="checklist"
+          name="progress"
           options={{
-            title: 'Checklist',
-            tabBarIcon: ({ color, size }) => <CheckCircle size={size} color={color} />,
+            title: 'Progress',
+            tabBarIcon: ({ color, size }) => <BarChart3 size={size} color={color} />,
           }}
         />
         <Tabs.Screen

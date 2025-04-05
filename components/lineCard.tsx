@@ -66,10 +66,9 @@ export default function LineCard() {
         </Button>
         <Button
           mode="outlined"
-          textColor={theme.colors.primary}
           onPress={clearData}
-          style={styles.button}
-        >
+          style={[styles.button, { borderColor: theme.colors.primary }]}
+          >
           Clear
         </Button>
       </View>

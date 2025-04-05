@@ -5,7 +5,7 @@ gym/
 │  │  ├─ home/
 │  │  │  ├─ _layout.tsx
 │  │  │  └─ index.tsx
-│  │  ├─ checklist/
+│  │  ├─ progress/
 │  │  │  ├─ _layout.tsx
 │  │  │  └─ index.tsx
 │  │  ├─ explore/
@@ -13,6 +13,10 @@ gym/
 │  │  │  └─ index.tsx
 │  │  └─ profile/
 │  │     └─ index.tsx
+│  ├─ auth/
+│  │  ├─ goodbye.tsx
+│  │  └─ welcome.tsx
+│  ├─ onboarding/
 │  ├─ _layout.tsx
 │  ├─ index.tsx
 

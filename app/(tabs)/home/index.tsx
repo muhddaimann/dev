@@ -1,8 +1,8 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Avatar, Text, useTheme, FAB } from 'react-native-paper';
-import WelcomeCard from '@/components/welcomeCard';
-import MembersCard from '@/components/membersCard';
-import SessionsCard from '@/components/sessionsCard';
+import QuoteCard from '@/components/home/quoteCard';
+import StreakCard from '@/components/home/streakCard';
+import ProgressCard from '@/components/home/progressCard';
 import CardCarousel from '@/components/cardCarousel';
 import LineCard from '@/components/lineCard';
 import { useToggle } from '@/contexts/themeContext';
@@ -36,10 +36,10 @@ export default function Home() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.row}><CardCarousel /></View>
-        <View style={styles.row}><WelcomeCard /></View>
+        <View style={styles.row}><QuoteCard /></View>
         <View style={styles.rows}>
-          <View style={styles.columnA}><MembersCard /></View>
-          <View style={styles.columnB}><SessionsCard /></View>
+          <View style={styles.columnA}><StreakCard /></View>
+          <View style={styles.columnB}><ProgressCard /></View>
         </View>
         <View style={styles.row}><LineCard /></View>
       </ScrollView>
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   userName: { fontSize: hp('2.2%'), fontWeight: '700' },
   row: { flexDirection: 'column', marginTop: hp('1%') },
   rows: { flexDirection: 'row', gap: hp('1%'), marginTop: hp('1%') },
-  columnA: { flex: 2, borderRadius: hp('1%') },
-  columnB: { flex: 3, borderRadius: hp('1%') },
+  columnA: { flex: 4, borderRadius: hp('1%'), minHeight: hp('10%') },
+  columnB: { flex: 5, borderRadius: hp('1%') },
   card: { padding: wp('2%'), borderRadius: hp('1%') },
   cardTitle: { fontSize: hp('2.2%'), fontWeight: '600' },
   cardText: { fontSize: hp('1.8%'), fontWeight: '400', marginTop: hp('0.5%') },
