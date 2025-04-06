@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <View style={[styles.header, { backgroundColor: theme.colors.surface }]}>
+      <View style={[styles.header, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
         <View>
           <Text style={[styles.greetingText, { color: theme.colors.onSurface }]}>Welcome back,</Text>
           <Text style={[styles.userName, { color: theme.colors.primary }]}>Muhd Aiman</Text>
@@ -57,22 +57,27 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   body: {
-    paddingHorizontal: hp('1%'),
+    paddingHorizontal: hp('2%'),
     paddingBottom: hp('3%'),
-  },  header: {
+  },  
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: hp('2%'),
+    paddingTop: hp('2%'),
+    paddingBottom: hp('1%'),
     paddingHorizontal: wp('6%'),
     borderBottomLeftRadius: hp('2%'),
     borderBottomRightRadius: hp('2%'),
-    elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
   },
   greetingText: { fontSize: hp('2%'), fontWeight: '400', marginBottom: hp('0.5%') },
   userName: { fontSize: hp('2.2%'), fontWeight: '700' },
-  row: { flexDirection: 'column', marginTop: hp('1%') },
-  rows: { flexDirection: 'row', gap: hp('1%'), marginTop: hp('1%') },
+  row: { flexDirection: 'column', marginTop: hp('1.5%') },
+  rows: { flexDirection: 'row', gap: hp('1.5%'), marginTop: hp('1.5%') },
   columnA: { flex: 4, borderRadius: hp('1%'), minHeight: hp('10%') },
   columnB: { flex: 5, borderRadius: hp('1%') },
   card: { padding: wp('2%'), borderRadius: hp('1%') },

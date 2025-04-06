@@ -77,7 +77,11 @@ export default function LineCard() {
 }
 
 const styles = StyleSheet.create({
-  card: {},
+  card: {
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.1,
+  shadowRadius: 1,
+  elevation: 2},
   chart: { marginVertical: hp('1.5%'), borderRadius: 12, alignSelf: 'center' },
   noData: { textAlign: 'center', marginVertical: hp('4%'), fontSize: hp('2%') },
   buttonRow: {

@@ -30,31 +30,39 @@ export default function TabLayout() {
           name="home"
           options={{
             title: 'Home',
-            tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
+            tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+              <Home size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="progress"
           options={{
             title: 'Progress',
-            tabBarIcon: ({ color, size }) => <BarChart3 size={size} color={color} />,
+            tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+              <BarChart3 size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="explore"
           options={{
             title: 'Explore',
-            tabBarIcon: ({ color, size }) => <Compass size={size} color={color} />,
+            tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+              <Compass size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
-            tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
+            tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+              <User size={size} color={color} />
+            ),
           }}
         />
       </Tabs>
     </SafeAreaView>
   );
-}
+};

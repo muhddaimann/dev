@@ -1,66 +1,51 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Text, Checkbox, Divider, useTheme, FAB, ProgressBar } from 'react-native-paper';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
-
-const initialExercises = [
-  { id: 1, name: 'Push-Ups', completed: false },
-  { id: 2, name: 'Squats', completed: false },
-  { id: 3, name: 'Plank', completed: false },
-  { id: 4, name: 'Jumping Jacks', completed: false },
-  { id: 5, name: 'Lunges', completed: false },
-];
+import { ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native';
+import Workout from './workout';
+import Records from './records';
+import { Text, useTheme } from 'react-native-paper';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export default function Progress() {
   const theme = useTheme();
-  const [exercises, setExercises] = useState(initialExercises);
-
-  const toggleCheck = (id: number) => {
-    setExercises(prev =>
-      prev.map(ex => (ex.id === id ? { ...ex, completed: !ex.completed } : ex))
-    );
-  };
-
-  const resetChecklist = () => {
-    setExercises(initialExercises);
-  };
-
-  const completedCount = exercises.filter(ex => ex.completed).length;
-  const progress = completedCount / exercises.length;
+  const [activeTab, setActiveTab] = useState<'workout' | 'records'>('workout');
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <ScrollView contentContainerStyle={styles.scrollBody} showsVerticalScrollIndicator={false} bounces={false}>
-        <Text style={[styles.title, { color: theme.colors.primary }]}>Today's Workout</Text>
-        <Divider style={{ marginBottom: hp('2%') }} />
-
-        {exercises.map(ex => (
-          <Checkbox.Item
-            key={ex.id}
-            label={ex.name}
-            status={ex.completed ? 'checked' : 'unchecked'}
-            onPress={() => toggleCheck(ex.id)}
-            labelStyle={{ fontSize: hp('2%') }}
-          />
+      <View style={[styles.tabContainer, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
+        {['workout', 'records'].map(tab => (
+          <TouchableOpacity
+            key={tab}
+            style={[
+              styles.tab,
+              activeTab === tab && {
+                borderBottomColor: theme.colors.primary,
+                borderBottomWidth: 2,
+              },
+            ]}
+            onPress={() => setActiveTab(tab as 'workout' | 'records')}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                { color: activeTab === tab ? theme.colors.primary : theme.colors.outline },
+              ]}
+            >
+              {tab === 'workout' ? 'Workout' : 'Records'}
+            </Text>
+          </TouchableOpacity>
         ))}
+      </View>
 
-        <ProgressBar
-          progress={progress}
-          color={theme.colors.primary}
-          style={styles.progress}
-        />
-
-        <Text style={[styles.progressText, { color: theme.colors.onBackground }]}>
-          {completedCount} of {exercises.length} completed
-        </Text>
+      <ScrollView
+        contentContainerStyle={styles.scrollBody}
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+      >
+        {activeTab === 'workout' ? <Workout /> : <Records />}
       </ScrollView>
-
-      <FAB
-        icon="refresh"
-        style={[styles.fab, { backgroundColor: theme.colors.error }]}
-        color={theme.colors.onError}
-        onPress={resetChecklist}
-      />
     </View>
   );
 }
@@ -68,28 +53,26 @@ export default function Progress() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   scrollBody: {
-    paddingHorizontal: wp('5%'),
+    paddingHorizontal: hp('2%'),
+    paddingVertical: hp('1.5%'),
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingTop: hp('3%'),
-    paddingBottom: hp('12%'), // Space for FAB
+    paddingBottom: hp('2%'),
+    borderBottomLeftRadius: hp('2%'),
+    borderBottomRightRadius: hp('2%'),
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
   },
-  title: {
-    fontSize: hp('2.8%'),
-    fontWeight: '700',
-    marginBottom: hp('1%'),
+  tab: {
+    paddingVertical: hp('0.8%'),
   },
-  progress: {
-    height: hp('1%'),
-    marginTop: hp('2%'),
-    borderRadius: hp('1%'),
-  },
-  progressText: {
-    textAlign: 'center',
-    marginTop: hp('1%'),
-    fontSize: hp('1.8%'),
-  },
-  fab: {
-    position: 'absolute',
-    right: hp('2%'),
-    bottom: hp('2%'),
+  tabText: {
+    fontSize: hp('2.2%'),
+    fontWeight: 'bold',
   },
 });
