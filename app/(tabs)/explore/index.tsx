@@ -1,6 +1,9 @@
 import { ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Card, Text, useTheme } from 'react-native-paper';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 const categories = [
   { id: 1, name: 'Chest', description: 'Push-Ups, Bench Press, Flys' },
@@ -15,10 +18,14 @@ export default function Explore() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <ScrollView contentContainerStyle={styles.scrollBody} showsVerticalScrollIndicator={false} bounces={false}>
+      <ScrollView
+        contentContainerStyle={styles.scrollBody}
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+      >
         <Text style={[styles.title, { color: theme.colors.primary }]}>Explore Categories</Text>
 
-        {categories.map(cat => (
+        {categories.map((cat) => (
           <TouchableOpacity key={cat.id} onPress={() => {}}>
             <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
               <Card.Content>

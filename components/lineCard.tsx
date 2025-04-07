@@ -40,7 +40,8 @@ export default function LineCard() {
               backgroundGradientFrom: theme.colors.surface,
               backgroundGradientTo: theme.colors.surface,
               decimalPlaces: 0,
-              color: (opacity = 1) => theme.colors.secondary + Math.floor(opacity * 255).toString(16),
+              color: (opacity = 1) =>
+                theme.colors.secondary + Math.floor(opacity * 255).toString(16),
               labelColor: () => theme.colors.onSurface,
               propsForDots: {
                 r: '4',
@@ -68,7 +69,7 @@ export default function LineCard() {
           mode="outlined"
           onPress={clearData}
           style={[styles.button, { borderColor: theme.colors.primary }]}
-          >
+        >
           Clear
         </Button>
       </View>
@@ -78,10 +79,11 @@ export default function LineCard() {
 
 const styles = StyleSheet.create({
   card: {
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.1,
-  shadowRadius: 1,
-  elevation: 2},
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
+  },
   chart: { marginVertical: hp('1.5%'), borderRadius: 12, alignSelf: 'center' },
   noData: { textAlign: 'center', marginVertical: hp('4%'), fontSize: hp('2%') },
   buttonRow: {
@@ -90,5 +92,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: hp('1%'),
     marginBottom: hp('2%'),
   },
-  button: { flex: 1, borderRadius: 8, height: hp('5.5%'), justifyContent: 'center' },
+  button: { flex: 1, borderRadius: hp('1%'), height: hp('5.5%'), justifyContent: 'center' },
 });
