@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Card, useTheme, Text, Modal, Portal, Button } from 'react-native-paper';
 import { WorkoutPlan } from '@/contexts/api/workout';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 type PlanCardProps = {
   plan: WorkoutPlan;
@@ -65,6 +68,7 @@ export default function PlanCard({ plan, onEdit, onDelete }: PlanCardProps) {
           <View style={styles.buttonRow}>
             <Button
               mode="contained"
+              buttonColor={theme.colors.primary}
               onPress={() => {
                 closeModal();
                 onEdit(plan);
@@ -74,15 +78,14 @@ export default function PlanCard({ plan, onEdit, onDelete }: PlanCardProps) {
               Edit
             </Button>
             <Button
-              mode="outlined"
+              mode="contained"
+              buttonColor={theme.colors.secondary}
               onPress={() => {
                 closeModal();
-                onDelete(plan.id);
               }}
-              textColor={theme.colors.error}
-              style={[styles.btn, { borderColor: theme.colors.error }]}
+              style={styles.btn}
             >
-              Delete
+              Start
             </Button>
           </View>
         </Modal>
@@ -93,6 +96,7 @@ export default function PlanCard({ plan, onEdit, onDelete }: PlanCardProps) {
 
 const styles = StyleSheet.create({
   card: {
+    padding: hp('1%'),
     marginBottom: hp('1.5%'),
     borderRadius: hp('1%'),
     shadowOffset: { width: 0, height: 2 },

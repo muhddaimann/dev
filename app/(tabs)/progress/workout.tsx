@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 import PlanCard from '@/components/progress/planCard';
 import { WorkoutPlan } from '@/contexts/api/workout';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 type WorkoutProps = {
   plans: WorkoutPlan[];
+  onEdit: (plan: WorkoutPlan) => void;
+  onDelete: (id: number) => void;
 };
 
-export default function Workout({ plans }: WorkoutProps) {
+export default function Workout({ plans, onEdit, onDelete }: WorkoutProps) {
   const theme = useTheme();
-  const [planList, setPlanList] = useState<WorkoutPlan[]>(plans);
-
-  const handleEdit = (updated: WorkoutPlan) => {
-    setPlanList(prev => prev.map(p => (p.id === updated.id ? updated : p)));
-  };
-
-  const handleDelete = (id: number) => {
-    setPlanList(prev => prev.filter(p => p.id !== id));
-  };
 
   return (
     <View style={[styles.page, { backgroundColor: theme.colors.background }]}>
-      {planList.length === 0 ? (
+      {plans.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={[styles.title, { color: theme.colors.primary }]}>Workout Plans</Text>
           <Text style={[styles.subText, { color: theme.colors.onBackground }]}>
@@ -32,16 +28,12 @@ export default function Workout({ plans }: WorkoutProps) {
         </View>
       ) : (
         <FlatList
-          data={planList}
+          data={plans}
           keyExtractor={(item) => item.id.toString()}
           bounces={false}
           contentContainerStyle={{ paddingTop: hp('2%'), paddingHorizontal: wp('4%') }}
           renderItem={({ item }) => (
-            <PlanCard
-              plan={item}
-              onEdit={handleEdit}
-              onDelete={() => handleDelete(item.id)}
-            />
+            <PlanCard plan={item} onEdit={onEdit} onDelete={() => onDelete(item.id)} />
           )}
         />
       )}
@@ -50,7 +42,7 @@ export default function Workout({ plans }: WorkoutProps) {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, paddingBottom: hp('3%') },
+  page: { flex: 1, marginTop: hp('1%'), paddingBottom: hp('3%') },
   emptyContainer: {
     flex: 1,
     alignItems: 'center',

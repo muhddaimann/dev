@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import {
-  Text,
-  Modal,
-  Portal,
-  TextInput,
-  Button,
-  useTheme,
-  Menu,
-} from 'react-native-paper';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import { Text, Modal, Portal, TextInput, Button, useTheme, Menu } from 'react-native-paper';
 import { WorkoutExercise, WorkoutPlan } from '@/contexts/api/workout';
+import { KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 type Props = {
   visible: boolean;
   onDismiss: () => void;
   onSave: (plan: WorkoutPlan) => void;
+  initialData?: WorkoutPlan | null;
 };
 
-export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
+export default function PlanAdd({ visible, onDismiss, onSave, initialData }: Props) {
   const theme = useTheme();
   const [step, setStep] = useState<1 | 2>(1);
   const [name, setName] = useState('');
@@ -31,6 +28,21 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
   const [sets, setSets] = useState('');
   const [duration, setDuration] = useState('');
   const [distance, setDistance] = useState('');
+
+  useEffect(() => {
+    if (visible) {
+      if (initialData) {
+        setName(initialData.name);
+        setExercises(initialData.exercises);
+        setStep(2);
+      } else {
+        setName('');
+        setExercises([]);
+        setStep(1);
+      }
+      resetExerciseFields();
+    }
+  }, [visible, initialData]);
 
   const resetExerciseFields = () => {
     setType('');
@@ -60,7 +72,14 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
 
   const handleSave = () => {
     if (!name.trim()) return;
-    onSave({ id: Date.now(), name, exercises });
+
+    const updatedPlan: WorkoutPlan = {
+      id: initialData?.id ?? Date.now(),
+      name,
+      exercises,
+    };
+
+    onSave(updatedPlan);
     setName('');
     setExercises([]);
     setStep(1);
@@ -77,11 +96,17 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
 
   return (
     <Portal>
-      <Modal
-        visible={visible}
-        onDismiss={handleDismiss}
-        contentContainerStyle={[styles.modal, { backgroundColor: theme.colors.surface }]}
+    <Modal visible={visible} onDismiss={handleDismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={[styles.modal, { backgroundColor: theme.colors.surface }]}
       >
+        <ScrollView
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ paddingBottom: hp('3%') }}
+        >
         {step === 1 ? (
           <>
             <Text style={[styles.title, { color: theme.colors.primary }]}>Workout Plan</Text>
@@ -121,15 +146,34 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
                   label="Exercise Type"
                   value={type}
                   mode="outlined"
-                  onFocus={() => setMenuVisible(true)}
+                  editable={false}
+                  onPressIn={() => setMenuVisible(true)}
                   style={styles.input}
                 />
               }
               contentStyle={{ backgroundColor: theme.colors.surface }}
             >
-              <Menu.Item onPress={() => { setType('Reps'); setMenuVisible(false); }} title="Reps & Sets" />
-              <Menu.Item onPress={() => { setType('Duration'); setMenuVisible(false); }} title="Duration (minutes)" />
-              <Menu.Item onPress={() => { setType('Distance'); setMenuVisible(false); }} title="Distance (KM)" />
+              <Menu.Item
+                onPress={() => {
+                  setType('Reps');
+                  setMenuVisible(false);
+                }}
+                title="Reps & Sets"
+              />
+              <Menu.Item
+                onPress={() => {
+                  setType('Duration');
+                  setMenuVisible(false);
+                }}
+                title="Duration (minutes)"
+              />
+              <Menu.Item
+                onPress={() => {
+                  setType('Distance');
+                  setMenuVisible(false);
+                }}
+                title="Distance (KM)"
+              />
             </Menu>
 
             {type === 'Reps' && (
@@ -175,14 +219,17 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
               />
             )}
 
-            <Button onPress={handleAddExercise} mode="contained" style={{ marginBottom: hp('1.5%') }}>
+            <Button
+              onPress={handleAddExercise}
+              mode="contained"
+              style={{ marginBottom: hp('1.5%') }}
+            >
               Add Exercise
             </Button>
 
             {exercises.map((e, i) => (
               <Text key={i} style={{ marginBottom: 2 }}>
-                - {e.name}{' '}
-                {e.type === 'Reps' && `${e.reps || ''} reps x ${e.sets || ''} sets`}
+                - {e.name} {e.type === 'Reps' && `${e.reps || ''} reps x ${e.sets || ''} sets`}
                 {e.type === 'Duration' && `${e.duration} min`}
                 {e.type === 'Distance' && `${e.distance} km`}
               </Text>
@@ -202,16 +249,23 @@ export default function PlanAdd({ visible, onDismiss, onSave }: Props) {
             </View>
           </>
         )}
-      </Modal>
-    </Portal>
-  );
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </Modal>
+  </Portal>
+);
 }
 
 const styles = StyleSheet.create({
   modal: { margin: hp('3%'), padding: hp('3%'), borderRadius: hp('1%') },
   title: { fontSize: hp('2%'), fontWeight: '600', marginBottom: hp('2%') },
   input: { marginBottom: hp('1%') },
-  row: { flexDirection: 'row', justifyContent: 'space-between', gap: hp('1%'), marginTop: hp('1%') },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: hp('1%'),
+    marginTop: hp('1%'),
+  },
   btn: { flex: 1, borderRadius: hp('2%') },
   half: { flex: 1 },
 });

@@ -4,6 +4,7 @@ import { Text, useTheme, FAB } from 'react-native-paper';
 import Workout from './workout';
 import Records from './records';
 import PlanAdd from '@/components/progress/planAdd';
+import PlanEdit from '@/components/progress/planEdit';
 import RecordAdd from '@/components/progress/recordAdd';
 import { WorkoutPlan } from '@/contexts/api/workout';
 import { WorkoutRecord } from '@/contexts/api/record';
@@ -15,16 +16,47 @@ import {
 export default function Progress() {
   const theme = useTheme();
   const [activeTab, setActiveTab] = useState<'workout' | 'records'>('workout');
-  const [visible, setVisible] = useState(false);
   const [plans, setPlans] = useState<WorkoutPlan[]>([]);
   const [records, setRecords] = useState<WorkoutRecord[]>([]);
+  const [visible, setVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<WorkoutPlan | null>(null);
 
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
+  const showModal = () => {
+    setSelectedPlan(null);
+    setVisible(true);
+  };
+
+  const hideModal = () => {
+    setVisible(false);
+    setSelectedPlan(null);
+  };
+
+  const showEditModal = (plan: WorkoutPlan) => {
+    setSelectedPlan(plan);
+    setEditVisible(true);
+  };
+
+  const hideEditModal = () => {
+    setEditVisible(false);
+    setSelectedPlan(null);
+  };
 
   const handleAddPlan = (newPlan: WorkoutPlan) => {
     setPlans((prev) => [...prev, newPlan]);
     hideModal();
+  };
+
+  const handleSaveEdit = (updated: WorkoutPlan) => {
+    setPlans((prev) =>
+      prev.map((p) => (p.id === updated.id ? updated : p))
+    );
+    hideEditModal();
+  };
+
+  const handleDeletePlan = (id: number) => {
+    setPlans((prev) => prev.filter((p) => p.id !== id));
+    hideEditModal();
   };
 
   const handleAddRecord = (newRecord: WorkoutRecord) => {
@@ -64,11 +96,37 @@ export default function Progress() {
         ))}
       </View>
 
-      {activeTab === 'workout' ? <Workout plans={plans} /> : <Records records={records} />}
-
       {activeTab === 'workout' ? (
-        <PlanAdd visible={visible} onDismiss={hideModal} onSave={handleAddPlan} />
+        <Workout
+          plans={plans}
+          onEdit={showEditModal}
+          onDelete={handleDeletePlan}
+        />
       ) : (
+        <Records records={records} />
+      )}
+
+      {activeTab === 'workout' && (
+        <>
+          <PlanAdd
+            visible={visible}
+            onDismiss={hideModal}
+            onSave={handleAddPlan}
+            initialData={null}
+          />
+          {selectedPlan && (
+            <PlanEdit
+              visible={editVisible}
+              onDismiss={hideEditModal}
+              onSave={handleSaveEdit}
+              onDelete={handleDeletePlan}
+              initialData={selectedPlan}
+            />
+          )}
+        </>
+      )}
+
+      {activeTab === 'records' && (
         <RecordAdd visible={visible} onDismiss={hideModal} onSave={handleAddRecord} />
       )}
 

@@ -40,7 +40,7 @@ export default function Records({ records }: RecordsProps) {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, paddingBottom: hp('3%') },
+  page: { flex: 1, marginTop: hp('1%'), paddingBottom: hp('3%') },
   emptyContainer: {
     flex: 1,
     alignItems: 'center',
