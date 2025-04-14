@@ -1,69 +1,64 @@
-export const Iron = ['#ECEFF1', '#607D8B', '#263238'];
-export const Lime = ['#F9FBE7', '#CDDC39', '#827717'];
-export const Flame = ['#FFF3E0', '#F57C00', '#E65100'];
-export const Blood = ['#FFEBEE', '#D32F2F', '#B71C1C'];
-export const Neutral = ['#FAFAFA', '#BDBDBD', '#212121'];
-export const Snow = ['#FFFFFF'];
-export const Jet = ['#111111'];
-
 export const LightColors = {
-  primary: Iron[2],
-  onPrimary: Snow[0],
-  primaryContainer: Iron[0],
-  onPrimaryContainer: Iron[2],
+  primary: '#5A4B81',
+  onPrimary: '#FFFFFF',
+  primaryContainer: '#E5E1F0',
+  onPrimaryContainer: '#2F264C',
 
-  secondary: Lime[1],
-  onSecondary: Neutral[2],
-  secondaryContainer: Lime[0],
-  onSecondaryContainer: Lime[2],
+  secondary: '#C98C9F',
+  onSecondary: '#1E1E1E',
+  secondaryContainer: '#F3E3E8',
+  onSecondaryContainer: '#5D2F3F',
 
-  background: Snow[0],
-  onBackground: Neutral[2],
-  surface: Neutral[0],
-  onSurface: Neutral[2],
-  surfaceVariant: Neutral[1],
-  onSurfaceVariant: Neutral[2],
+  tertiary: '#6D9E8D',
+  onTertiary: '#FFFFFF',
+  tertiaryContainer: '#DDEDE7',
+  onTertiaryContainer: '#27443A',
 
-  error: Blood[1],
-  onError: Snow[0],
-  errorContainer: Blood[0],
-  onErrorContainer: Blood[2],
+  error: '#B3261E',
+  onError: '#FFFFFF',
+  errorContainer: '#F9DEDC',
+  onErrorContainer: '#410002',
 
-  outline: Neutral[1],
-  inverseSurface: Neutral[2],
-  inverseOnSurface: Snow[0],
-  inversePrimary: Iron[2],
-  shadow: Iron[0],
-  scrim: Iron[2],
+  background: '#FAFAFA',
+  onBackground: '#1E1E1E',
+  outline: '#D3D3D3',
+  shadow: '#D3D3D3',
+
+  surface: '#FFFFFF',
+  onSurface: '#1E1E1E',
+  surfaceVariant: '#F0EEF4',
+  onSurfaceVariant: '#4A425E',
 };
 
 export const DarkColors = {
-  primary: Iron[1],
-  onPrimary: Snow[0],
-  primaryContainer: Iron[2],
-  onPrimaryContainer: Snow[0],
+  primary: '#CAC2E4',
+  onPrimary: '#2F264C',
+  primaryContainer: '#5A4B81',
+  onPrimaryContainer: '#FFFFFF',
 
-  secondary: Lime[2],
-  onSecondary: Snow[0],
-  secondaryContainer: Lime[1],
-  onSecondaryContainer: Jet[0],
+  secondary: '#E5BFCB',
+  onSecondary: '#40262F',
+  secondaryContainer: '#C98C9F',
+  onSecondaryContainer: '#FFFFFF',
 
-  background: Jet[0],
-  onBackground: Snow[0],
-  surface: Neutral[2],
-  onSurface: Snow[0],
-  surfaceVariant: Neutral[1],
-  onSurfaceVariant: Snow[0],
+  tertiary: '#B4D7CC',
+  onTertiary: '#27443A',
+  tertiaryContainer: '#6D9E8D',
+  onTertiaryContainer: '#FFFFFF',
 
-  error: Blood[2],
-  onError: Snow[0],
-  errorContainer: Blood[0],
-  onErrorContainer: Blood[2],
+  error: '#F2B8B5',
+  onError: '#601410',
+  errorContainer: '#8C1D18',
+  onErrorContainer: '#FFDAD6',
 
-  outline: Neutral[1],
-  inverseSurface: Snow[0],
-  inverseOnSurface: Jet[0],
-  inversePrimary: Iron[1],
-  shadow: Snow[0],
-  scrim: Iron[1],
+  background: '#121212',
+  onBackground: '#EAEAEA',
+  outline: '#8A8A8A',
+  shadow: '#000000',
+
+  surface: '#1E1E1E',
+  onSurface: '#EAEAEA',
+  surfaceVariant: '#2E2C3B',
+  onSurfaceVariant: '#D1CFE4',
 };
+

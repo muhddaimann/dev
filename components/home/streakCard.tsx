@@ -13,13 +13,13 @@ export default function StreakCard() {
 
   return (
     <View style={[styles.card, {
-      backgroundColor: theme.colors.secondaryContainer,
+      backgroundColor: theme.colors.primaryContainer,
       shadowColor: theme.colors.shadow,
       elevation: 3,
     }]}>
       <TouchableWithoutFeedback onPress={incrementStreak}>
         <View style={styles.inner}>
-          <Text style={[styles.streakText, { color: theme.colors.onSecondaryContainer }]}>
+          <Text style={[styles.streakText, { color: theme.colors.onPrimaryContainer }]}>
             🔥 {streakCount}-Day Streak
           </Text>
         </View>

@@ -23,7 +23,7 @@ export default function TabLayout() {
       useEffect(() => {
         Animated.parallel([
           Animated.timing(scaleAnim, {
-            toValue: focused ? 1 : 0.9,
+            toValue: focused ? 0.9 : 1,
             duration: 300,
             easing: Easing.out(Easing.ease),
             useNativeDriver: true,
@@ -40,7 +40,7 @@ export default function TabLayout() {
       return (
         <View style={styles.iconContainer}>
           <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-            <IconComponent size={hp('3.3%')} color={color} />
+            <IconComponent size={hp('3%')} color={color} />
           </Animated.View>
           <Animated.View
             style={{
