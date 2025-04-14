@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Avatar, Text, Button, useTheme } from 'react-native-paper';
 import { useRouter } from 'expo-router';
@@ -7,16 +8,20 @@ export default function Welcome() {
   const theme = useTheme();
   const router = useRouter();
 
-  const goToHome = () => {
-    router.replace('/(tabs)/home');
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace('/(tabs)/home');
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <Avatar.Icon size={hp('10%')} icon="account" style={{ backgroundColor: theme.colors.primary }} />
       <Text style={[styles.title, { color: theme.colors.primary }]}>Welcome Back, Aiman</Text>
       <Text style={[styles.subtitle, { color: theme.colors.onBackground }]}>You're successfully logged in!</Text>
-      <Button mode="contained" onPress={goToHome} style={styles.button}>
+      <Button mode="contained" onPress={() => router.replace('/(tabs)/home')} style={styles.button}>
         Continue to Home
       </Button>
     </View>

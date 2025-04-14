@@ -1,8 +1,8 @@
-export const Iron = ['#ECEFF1', '#607D8B', '#263238']; // primary (steel blue tone)
-export const Lime = ['#F9FBE7', '#CDDC39', '#827717']; // secondary (fresh/energy)
-export const Flame = ['#FFF3E0', '#F57C00', '#E65100']; // tertiary (warm and bold)
-export const Blood = ['#FFEBEE', '#D32F2F', '#B71C1C']; // error (deep red)
-export const Neutral = ['#FAFAFA', '#BDBDBD', '#212121']; // surface
+export const Iron = ['#ECEFF1', '#607D8B', '#263238'];
+export const Lime = ['#F9FBE7', '#CDDC39', '#827717'];
+export const Flame = ['#FFF3E0', '#F57C00', '#E65100'];
+export const Blood = ['#FFEBEE', '#D32F2F', '#B71C1C'];
+export const Neutral = ['#FAFAFA', '#BDBDBD', '#212121'];
 export const Snow = ['#FFFFFF'];
 export const Jet = ['#111111'];
 
@@ -16,11 +16,6 @@ export const LightColors = {
   onSecondary: Neutral[2],
   secondaryContainer: Lime[0],
   onSecondaryContainer: Lime[2],
-
-  tertiary: Flame[1],
-  onTertiary: Snow[0],
-  tertiaryContainer: Flame[0],
-  onTertiaryContainer: Flame[2],
 
   background: Snow[0],
   onBackground: Neutral[2],
@@ -52,11 +47,6 @@ export const DarkColors = {
   onSecondary: Snow[0],
   secondaryContainer: Lime[1],
   onSecondaryContainer: Jet[0],
-
-  tertiary: Flame[2],
-  onTertiary: Snow[0],
-  tertiaryContainer: Flame[1],
-  onTertiaryContainer: Snow[0],
 
   background: Jet[0],
   onBackground: Snow[0],

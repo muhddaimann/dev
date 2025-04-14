@@ -1,50 +1,6 @@
 gym/
 ├─ app/
 │  ├─ (tabs)/
-│  │  ├─ _layout.tsx
-│  │  ├─ home/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  ├─ progress/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  ├─ explore/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  └─ profile/
-│  │     └─ index.tsx
-│  ├─ auth/
-│  │  ├─ goodbye.tsx
-│  │  └─ welcome.tsx
-│  ├─ onboarding/
-│  ├─ _layout.tsx
-│  ├─ index.tsx
-
-budget/
-├─ app/
-│  ├─ (tabs)/
-│  │  ├─ _layout.tsx
-│  │  ├─ home/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  ├─ transaction/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  ├─ trend/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
-│  │  └─ profile/
-│  │     └─ index.tsx
-│  ├─ auth/
-│  │  └─ index.tsx
-│  ├─ _layout.tsx
-
-dev/
-├─ app/
-│  ├─ (tabs)/
-│  │  ├─ checklist/
-│  │  │  ├─ _layout.tsx
-│  │  │  └─ index.tsx
 │  │  ├─ explore/
 │  │  │  ├─ _layout.tsx
 │  │  │  └─ index.tsx
@@ -54,18 +10,56 @@ dev/
 │  │  ├─ profile/
 │  │  │  ├─ _layout.tsx
 │  │  │  └─ index.tsx
+│  │  ├─ progress/
+│  │  │  ├─ _layout.tsx
+│  │  │  ├─ index.tsx
+│  │  │  ├─ records.tsx
+│  │  │  └─ workout.tsx
 │  │  └─ _layout.tsx
 │  ├─ auth/
 │  │  ├─ goodbye.tsx
 │  │  └─ welcome.tsx
+│  ├─ onboarding/
 │  ├─ _layout.tsx
 │  └─ index.tsx
 ├─ assets/
+│  └─ images/
+│     ├─ favicon.png
+│     └─ icon.png
 ├─ components/
+│  ├─ home/
+│  │  ├─ progressCard.tsx
+│  │  ├─ quoteCard.tsx
+│  │  └─ streakCard.tsx
+│  ├─ progress/
+│  │  ├─ planAdd.tsx
+│  │  ├─ planCard.tsx
+│  │  ├─ planEdit.tsx
+│  │  ├─ recordAdd.tsx
+│  │  └─ recordCard.tsx
+│  ├─ card.tsx
+│  ├─ cardA.tsx
+│  ├─ cardB.tsx
+│  ├─ cardCarousel.tsx
+│  └─ lineCard.tsx
 ├─ constants/
+│  ├─ color.ts
+│  └─ theme.ts
 ├─ contexts/
 │  ├─ api/
+│  │  ├─ record.ts
+│  │  ├─ useAppStore.ts
+│  │  └─ workout.ts
 │  ├─ authContext.tsx
 │  └─ themeContext.tsx
 ├─ hooks/
-
+│  └─ useFrameworkReady.ts
+├─ .eslintrc.js
+├─ .gitignore
+├─ .prettierrc
+├─ app.json
+├─ db
+├─ expo-env.d.ts
+├─ package-lock.json
+├─ package.json
+└─ tsconfig.json
