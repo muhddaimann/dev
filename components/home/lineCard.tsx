@@ -60,6 +60,7 @@ export default function LineCard() {
         <Button
           mode="contained"
           buttonColor={theme.colors.primary}
+          textColor={theme.colors.onPrimary}
           onPress={addRandomData}
           style={styles.button}
         >
@@ -68,7 +69,8 @@ export default function LineCard() {
         <Button
           mode="outlined"
           onPress={clearData}
-          style={[styles.button, { borderColor: theme.colors.primary }]}
+          textColor={theme.colors.onPrimaryContainer}
+          style={[styles.button, { borderColor: theme.colors.onPrimaryContainer }]}
         >
           Clear
         </Button>
