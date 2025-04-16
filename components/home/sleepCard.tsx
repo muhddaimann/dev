@@ -52,7 +52,7 @@ export default function SleepCard() {
                     backgroundColor:
                       i === sleepData.length - 1
                         ? theme.colors.primary
-                        : `${theme.colors.secondary}66`,
+                        : `${theme.colors.secondary}55`,
                   },
                 ]}
               />
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
   duration: {
     fontSize: hp('2.8%'),
-    fontWeight: '700',
+    fontWeight: '600',
   },
   label: {
     fontSize: hp('1.5%'),

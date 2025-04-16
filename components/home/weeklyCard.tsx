@@ -58,7 +58,7 @@ export default function WeeklyCard() {
           if (day.isToday) {
             backgroundColor = theme.colors.primary;
           } else if (day.isBeforeToday) {
-            backgroundColor = `${theme.colors.secondary}66`;
+            backgroundColor = `${theme.colors.secondary}55`;
           }
 
           return (

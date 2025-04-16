@@ -42,7 +42,7 @@ export default function DailyCard() {
                   style={[
                     styles.barSegment,
                     {
-                      backgroundColor: i < 2 ? theme.colors.primary : `${theme.colors.secondary}66`,
+                      backgroundColor: i < 2 ? theme.colors.primary : `${theme.colors.secondary}55`,
                     },
                   ]}
                 />

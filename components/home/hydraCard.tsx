@@ -1,27 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Card, useTheme } from 'react-native-paper';
 import { ChevronRight } from 'lucide-react-native';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function HydraCard() {
   const theme = useTheme();
+  const [hasReminder, setHasReminder] = useState(true);
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
-      <View style={styles.row}>
-        <View style={styles.textBlock}>
-          <Text style={[styles.title, { color: theme.colors.onBackground }]}>Hydration</Text>
-        </View>
-
-        <TouchableOpacity style={styles.iconBlock}>
+    <Card
+      style={[
+        styles.card,
+        { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow },
+      ]}
+    >
+      <View style={styles.header}>
+        <Text style={[styles.title, { color: theme.colors.onBackground }]}>Hydration</Text>
+        <TouchableOpacity style={styles.icon}>
           <ChevronRight size={hp('3%')} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
 
-      <View style={styles.detailRow}>
-        <Text style={[styles.metric, { color: theme.colors.primary }]}>1.8 L</Text>
-        <Text style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>Water Intake</Text>
+      <View style={styles.metricRow}>
+        <View style={styles.metricBlock}>
+          <Text style={[styles.metric, { color: theme.colors.primary }]}>2.0 L</Text>
+          <Text style={[styles.label, { color: theme.colors.secondary }]}>per day</Text>
+        </View>
+
+        <TouchableOpacity
+          onPress={() => setHasReminder(!hasReminder)}
+          style={[
+            styles.pillContainer,
+            { backgroundColor: `${theme.colors.secondary}22` },
+          ]}
+        >
+          <Text style={[styles.pillText, { color: theme.colors.onSurfaceVariant }]}>
+            {hasReminder ? 'Every Hour' : 'Set Reminder'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </Card>
   );
@@ -36,35 +53,46 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
-    width: '100%',
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: hp('1%'),
-  },
-  textBlock: { flex: 1 },
-  iconBlock: { justifyContent: 'center', alignItems: 'flex-end' },
-  detailRow: {
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: hp('0.5%'),
-  },
-  detailBlock: {
     alignItems: 'center',
-    flex: 1,
+    marginBottom: hp('.5%'),
+  },
+  icon: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
   title: {
     fontSize: hp('1.8%'),
-    fontWeight: '400',
+    fontWeight: '600',
+  },
+  metricRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    gap: hp('1%'),
+  },
+  metricBlock: {
+    flexDirection: 'column',
   },
   metric: {
-    fontSize: hp('2.8%'),
-    fontWeight: '700',
+    fontSize: hp('3%'),
+    fontWeight: 'bold',
   },
   label: {
     fontSize: hp('1.5%'),
     fontWeight: '400',
-    marginTop: hp('0.3%'),
+    marginTop: hp('0.5%'),
+  },
+  pillContainer: {
+    paddingHorizontal: hp('1%'),
+    paddingVertical: hp('0.4%'),
+    borderRadius: hp('2%'),
+  },
+  pillText: {
+    fontSize: hp('1.4%'),
+    fontWeight: '600',
   },
 });

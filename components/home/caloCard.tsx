@@ -1,27 +1,41 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Card, useTheme } from 'react-native-paper';
+import { Card, useTheme, ProgressBar } from 'react-native-paper';
 import { ChevronRight } from 'lucide-react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default function CaloCard() {
   const theme = useTheme();
+  const intake = 1840;
+  const target = 2000;
+  const ratio = Math.min(intake / target, 1);
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
-      <View style={styles.row}>
-        <View style={styles.textBlock}>
-          <Text style={[styles.title, { color: theme.colors.onBackground }]}>Calories</Text>
-        </View>
-
-        <TouchableOpacity style={styles.iconBlock}>
+    <Card
+      style={[
+        styles.card,
+        { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow },
+      ]}
+    >
+      <View style={styles.header}>
+        <Text style={[styles.title, { color: theme.colors.onBackground }]}>Calorie Intake</Text>
+        <TouchableOpacity style={styles.icon}>
           <ChevronRight size={hp('3%')} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
 
-      <View style={styles.detailRow}>
-        <Text style={[styles.metric, { color: theme.colors.primary }]}>1,650 kcal</Text>
-        <Text style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>Consumed Today</Text>
+      <View style={styles.progressBlock}>
+        <View style={styles.progressBarWrapper}>
+          <ProgressBar
+            progress={ratio}
+            color={`${theme.colors.secondary}22` }
+            style={styles.progressBar}
+          />
+        </View>
+        <Text style={styles.progressLabel}>
+          <Text style={{ color: theme.colors.secondary }}>{intake}</Text>
+          <Text style={{ color: theme.colors.onSurface }}> / {target} kcal</Text>
+        </Text>
       </View>
     </Card>
   );
@@ -29,6 +43,8 @@ export default function CaloCard() {
 
 const styles = StyleSheet.create({
   card: {
+    flex: 1,
+    height: '100%',
     paddingVertical: hp('1.5%'),
     paddingHorizontal: hp('2%'),
     borderRadius: hp('1%'),
@@ -36,35 +52,35 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
-    width: '100%',
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: hp('1%'),
-  },
-  textBlock: { flex: 1 },
-  iconBlock: { justifyContent: 'center', alignItems: 'flex-end' },
-  detailRow: {
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: hp('0.5%'),
-  },
-  detailBlock: {
     alignItems: 'center',
-    flex: 1,
+    marginBottom: hp('1.5%'),
+  },
+  icon: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
   title: {
     fontSize: hp('1.8%'),
-    fontWeight: '400',
+    fontWeight: '600',
   },
-  metric: {
-    fontSize: hp('2.8%'),
-    fontWeight: '700',
+  progressBlock: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: hp('1%'),
   },
-  label: {
+  progressBarWrapper: {
+    width: '100%',
+  },
+  progressBar: {
+    height: hp('1.4%'),
+    borderRadius: hp('1%'),
+  },
+  progressLabel: {
     fontSize: hp('1.5%'),
-    fontWeight: '400',
-    marginTop: hp('0.3%'),
+    fontWeight: '500',
   },
 });

@@ -9,7 +9,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-const stepData = [1000, 2000, 3000, 4000, 5000, 6000, 7000];
+const stepData = [1000, 1000, 1000, 1000, 1000, 2300, 8200];
 
 export default function StepCard() {
   const theme = useTheme();
@@ -57,7 +57,7 @@ export default function StepCard() {
               backgroundGradientFrom: theme.colors.surface,
               backgroundGradientTo: theme.colors.surface,
               decimalPlaces: 0,
-              color: () =>  `${theme.colors.secondary}66`,
+              color: () =>  `${theme.colors.secondary}55`,
               labelColor: () => 'transparent',
               propsForDots: {
                 r: '4',

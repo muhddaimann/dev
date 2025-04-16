@@ -55,10 +55,10 @@ export default function Home() {
           <WeeklyCard />
         </View>
         <View style={styles.rows}>
-          <View style={[styles.columnA, { backgroundColor: theme.colors.surfaceVariant }]}>
+          <View style={styles.columnA}>
             <DailyCard />
           </View>
-          <View style={[styles.columnB, { backgroundColor: theme.colors.surfaceVariant }]}>
+          <View style={styles.columnB}>
             <StreakCard />
           </View>
         </View>
@@ -71,17 +71,16 @@ export default function Home() {
         <View style={styles.ro}>
           <StepCard />
         </View>
-        <View style={styles.ro}>
-          <HydraCard />
-        </View>
-        <View style={styles.ro}>
-          <CaloCard />
+        <View style={styles.rows}>
+          <View style={styles.columnB}>
+            <HydraCard />
+          </View>
+          <View style={styles.columnB}>
+            <CaloCard />
+          </View>
         </View>
         <View style={styles.ro}>
           <ActivityCard />
-        </View>
-        <View style={styles.ro}>
-          <LineCard />
         </View>
       </ScrollView>
       <FAB
