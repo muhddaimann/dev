@@ -30,7 +30,7 @@ export default function DailyCard() {
       <View style={styles.row}>
         <View style={styles.textBlock}>
           <Text style={[styles.ti, { color: theme.colors.primary }]}>2/5</Text>
-          <Text style={[styles.sub, { color: theme.colors.primary }]}>Achieved</Text>
+          <Text style={[styles.sub, { color: theme.colors.secondary }]}>Achieved</Text>
         </View>
 
         <View style={styles.visualBlock}>
@@ -42,7 +42,7 @@ export default function DailyCard() {
                   style={[
                     styles.barSegment,
                     {
-                      backgroundColor: i < 2 ? theme.colors.primary : `${theme.colors.secondary}77`,
+                      backgroundColor: i < 2 ? theme.colors.primary : `${theme.colors.secondary}66`,
                     },
                   ]}
                 />
@@ -64,12 +64,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
-    width: '100%',
   },
   row: { flexDirection: 'row', marginVertical: hp('0.5%') },
   textBlock: { flex: 1, justifyContent: 'center' },
   iconBlock: { justifyContent: 'center', alignItems: 'flex-end' },
-  visualBlock: { justifyContent: 'center', alignItems: 'flex-end'},
+  visualBlock: { justifyContent: 'center', alignItems: 'flex-end' },
   title: { fontSize: hp('2%'), fontWeight: '600' },
   subtitle: { fontSize: hp('1.6%'), fontWeight: '600' },
   ti: { fontSize: hp('3%'), fontWeight: '600' },

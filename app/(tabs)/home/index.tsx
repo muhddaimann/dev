@@ -4,6 +4,11 @@ import DailyCard from '@/components/home/dailyCard';
 import WeeklyCard from '@/components/home/weeklyCard';
 import StreakCard from '@/components/home/streakCard';
 import CardCarousel from '@/components/home/cardCarousel';
+import SleepCard from '@/components/home/sleepCard';
+import StepCard from '@/components/home/stepCard';
+import HydraCard from '@/components/home/hydraCard';
+import CaloCard from '@/components/home/caloCard';
+import ActivityCard from '@/components/home/activityCard';
 import LineCard from '@/components/home/lineCard';
 import { useToggle } from '@/contexts/themeContext';
 import {
@@ -43,8 +48,12 @@ export default function Home() {
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.ro}><CardCarousel /></View>
-        <View style={styles.ro}><WeeklyCard /></View>
+        <View style={styles.ro}>
+          <CardCarousel />
+        </View>
+        <View style={styles.ro}>
+          <WeeklyCard />
+        </View>
         <View style={styles.rows}>
           <View style={[styles.columnA, { backgroundColor: theme.colors.surfaceVariant }]}>
             <DailyCard />
@@ -53,13 +62,32 @@ export default function Home() {
             <StreakCard />
           </View>
         </View>
-        <View style={styles.row}><LineCard /></View>
+        <View style={styles.row}>
+          <Text style={[styles.sectionTitle, { color: theme.colors.onBackground }]}>Goals</Text>
+        </View>
+        <View style={styles.row}>
+          <SleepCard />
+        </View>
+        <View style={styles.ro}>
+          <StepCard />
+        </View>
+        <View style={styles.ro}>
+          <HydraCard />
+        </View>
+        <View style={styles.ro}>
+          <CaloCard />
+        </View>
+        <View style={styles.ro}>
+          <ActivityCard />
+        </View>
+        <View style={styles.ro}>
+          <LineCard />
+        </View>
       </ScrollView>
-
       <FAB
-        style={[styles.fab, { backgroundColor: theme.colors.primary }]}
+        style={[styles.fab, { backgroundColor: theme.colors.secondary }]}
         icon={isDarkMode ? 'weather-sunny' : 'weather-night'}
-        color={theme.colors.onPrimary}
+        color={theme.colors.onSecondary}
         onPress={toggleTheme}
       />
     </View>
@@ -70,7 +98,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   body: {
     paddingHorizontal: hp('2%'),
-    paddingBottom: hp('3%'),
+    paddingBottom: hp('10%'),
   },
   header: {
     flexDirection: 'row',
@@ -94,6 +122,11 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: hp('2.2%'),
     fontWeight: '600',
+  },
+  sectionTitle: {
+    fontSize: hp('2%'),
+    fontWeight: '600',
+    paddingHorizontal: wp('1%'),
   },
   ro: { flexDirection: 'column', marginTop: hp('1%') },
   row: { flexDirection: 'column', marginTop: hp('1.5%') },
