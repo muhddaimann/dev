@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Card, useTheme } from 'react-native-paper';
 import { ChevronRight } from 'lucide-react-native';
+import { format } from 'date-fns';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -18,9 +19,9 @@ export default function DailyCard() {
       ]}
     >
       <View style={styles.row}>
-        <View style={styles.textBlock}>
-          <Text style={[styles.title, { color: theme.colors.onBackground }]}>Tue, Apr 15</Text>
-        </View>
+        <Text style={[styles.title, { color: theme.colors.onBackground }]}>
+          {format(new Date(), 'EEE, MMM d')}
+        </Text>
 
         <TouchableOpacity style={styles.iconBlock}>
           <ChevronRight size={hp('3%')} color={theme.colors.primary} />

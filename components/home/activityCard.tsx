@@ -9,19 +9,26 @@ export default function ActivityCard() {
 
   return (
     <Card style={[styles.card, { backgroundColor: theme.colors.surface, shadowColor: theme.colors.shadow }]}>
-      <View style={styles.row}>
-        <View style={styles.textBlock}>
-          <Text style={[styles.title, { color: theme.colors.onBackground }]}>Activity</Text>
-        </View>
-
-        <TouchableOpacity style={styles.iconBlock}>
+      <View style={styles.header}>
+        <Text style={[styles.title, { color: theme.colors.onBackground }]}>Activity</Text>
+        <TouchableOpacity>
           <ChevronRight size={hp('3%')} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
 
-      <View style={styles.detailRow}>
-        <Text style={[styles.metric, { color: theme.colors.primary }]}>32 min</Text>
-        <Text style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>Workout Time</Text>
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <Text style={[styles.metric, { color: theme.colors.secondary }]}>5</Text>
+          <Text style={[styles.label, { color: theme.colors.onSurface }]}>Goals</Text>
+        </View>
+        <View style={styles.column}>
+          <Text style={[styles.metric, { color: theme.colors.secondary }]}>42 min</Text>
+          <Text style={[styles.label, { color: theme.colors.onSurface }]}>Workout</Text>
+        </View>
+        <View style={styles.column}>
+          <Text style={[styles.metric, { color: theme.colors.secondary }]}>8,200</Text>
+          <Text style={[styles.label, { color: theme.colors.onSurface }]}>Steps</Text>
+        </View>
       </View>
     </Card>
   );
@@ -29,6 +36,7 @@ export default function ActivityCard() {
 
 const styles = StyleSheet.create({
   card: {
+    width: '100%',
     paddingVertical: hp('1.5%'),
     paddingHorizontal: hp('2%'),
     borderRadius: hp('1%'),
@@ -36,27 +44,24 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
-    width: '100%',
+    gap: hp('1.2%'),
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: hp('1%'),
-  },
-  textBlock: { flex: 1 },
-  iconBlock: { justifyContent: 'center', alignItems: 'flex-end' },
-  detailRow: {
+  header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: hp('0.5%'),
-  },
-  detailBlock: {
     alignItems: 'center',
-    flex: 1,
   },
   title: {
     fontSize: hp('1.8%'),
-    fontWeight: '400',
+    fontWeight: '600',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: hp('1%'),
+  },
+  column: {
+    alignItems: 'center',
   },
   metric: {
     fontSize: hp('2.8%'),

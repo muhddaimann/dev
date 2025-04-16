@@ -1,5 +1,11 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Avatar, Text, useTheme, FAB } from 'react-native-paper';
+import React, { useRef, useState } from 'react';
+import { ScrollView, StyleSheet, View, Text as RNText, TouchableOpacity } from 'react-native';
+import { Avatar, Text, useTheme } from 'react-native-paper';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+
 import DailyCard from '@/components/home/dailyCard';
 import WeeklyCard from '@/components/home/weeklyCard';
 import StreakCard from '@/components/home/streakCard';
@@ -10,94 +16,110 @@ import HydraCard from '@/components/home/hydraCard';
 import CaloCard from '@/components/home/caloCard';
 import ActivityCard from '@/components/home/activityCard';
 import LineCard from '@/components/home/lineCard';
-import { useToggle } from '@/contexts/themeContext';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
 
 export default function Home() {
   const theme = useTheme();
-  const { toggleTheme, isDarkMode } = useToggle();
+  const scrollRef = useRef<ScrollView>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = (event: any) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    setShowBackToTop(scrollY > hp('14%'));
+  };
+
+  const scrollToTop = () => {
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <View
-        style={[
-          styles.header,
-          {
-            backgroundColor: theme.colors.surface,
-            shadowColor: theme.colors.shadow,
-          },
-        ]}
-      >
-        <View>
-          <Text style={[styles.greetingText, { color: theme.colors.primary }]}>Welcome back,</Text>
-          <Text style={[styles.userName, { color: theme.colors.onSurface }]}>Rahman</Text>
-        </View>
-        <Avatar.Text
-          size={hp('6%')}
-          label="AR"
-          style={{ backgroundColor: theme.colors.primary }}
-          labelStyle={{ color: theme.colors.onPrimary }}
-        />
-      </View>
-
       <ScrollView
-        contentContainerStyle={styles.body}
+        ref={scrollRef}
+        contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.colors.background }]}
         bounces={false}
         showsVerticalScrollIndicator={false}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
       >
-        <View style={styles.ro}>
-          <CardCarousel />
-        </View>
-        <View style={styles.ro}>
-          <WeeklyCard />
-        </View>
-        <View style={styles.rows}>
-          <View style={styles.columnA}>
-            <DailyCard />
+        <View
+          style={[
+            styles.header,
+            {
+              backgroundColor: theme.colors.surface,
+              shadowColor: theme.colors.shadow,
+            },
+          ]}
+        >
+          <View>
+            <Text style={[styles.greetingText, { color: theme.colors.primary }]}>Welcome back,</Text>
+            <Text style={[styles.userName, { color: theme.colors.onSurface }]}>Rahman</Text>
           </View>
-          <View style={styles.columnB}>
-            <StreakCard />
+          <Avatar.Text
+            size={hp('6%')}
+            label="AR"
+            style={{ backgroundColor: theme.colors.primary }}
+            labelStyle={{ color: theme.colors.onPrimary }}
+          />
+        </View>
+
+        <View style={styles.body}>
+          <View style={styles.ro}>
+            <CardCarousel />
           </View>
-        </View>
-        <View style={styles.row}>
-          <Text style={[styles.sectionTitle, { color: theme.colors.onBackground }]}>Goals</Text>
-        </View>
-        <View style={styles.row}>
-          <SleepCard />
-        </View>
-        <View style={styles.ro}>
-          <StepCard />
-        </View>
-        <View style={styles.rows}>
-          <View style={styles.columnB}>
-            <HydraCard />
+          <View style={styles.ro}>
+            <WeeklyCard />
           </View>
-          <View style={styles.columnB}>
-            <CaloCard />
+          <View style={styles.rows}>
+            <View style={styles.columnA}>
+              <DailyCard />
+            </View>
+            <View style={styles.columnB}>
+              <StreakCard />
+            </View>
           </View>
-        </View>
-        <View style={styles.ro}>
-          <ActivityCard />
+          <View style={styles.row}>
+            <Text style={[styles.sectionTitle, { color: theme.colors.onBackground }]}>Goals</Text>
+          </View>
+          <View style={styles.row}>
+            <SleepCard />
+          </View>
+          <View style={styles.row}>
+            <StepCard />
+          </View>
+          <View style={styles.rows}>
+            <View style={styles.columnB}>
+              <HydraCard />
+            </View>
+            <View style={styles.columnB}>
+              <CaloCard />
+            </View>
+          </View>
+          <View style={styles.row}>
+            <ActivityCard />
+          </View>
+          <View style={styles.row}>
+            <LineCard />
+          </View>
         </View>
       </ScrollView>
-      <FAB
-        style={[styles.fab, { backgroundColor: theme.colors.secondary }]}
-        icon={isDarkMode ? 'weather-sunny' : 'weather-night'}
-        color={theme.colors.onSecondary}
-        onPress={toggleTheme}
-      />
+
+      {showBackToTop && (
+        <TouchableOpacity style={[styles.backToTop, { backgroundColor: `${theme.colors.primary}99` }]} onPress={scrollToTop}>
+          <RNText style={[styles.backToTopText, { color: theme.colors.onPrimary }]}>Back to Top</RNText>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: hp('4%'),
+  },
   body: {
     paddingHorizontal: hp('2%'),
-    paddingBottom: hp('10%'),
   },
   header: {
     flexDirection: 'row',
@@ -132,8 +154,17 @@ const styles = StyleSheet.create({
   rows: { flexDirection: 'row', gap: hp('1.5%'), marginTop: hp('1.5%') },
   columnA: { flex: 2, borderRadius: hp('1%'), minHeight: hp('10%') },
   columnB: { flex: 1, borderRadius: hp('1%') },
-  card: { padding: wp('2%'), borderRadius: hp('1%') },
-  cardTitle: { fontSize: hp('2.2%'), fontWeight: '600' },
-  cardText: { fontSize: hp('1.8%'), fontWeight: '400', marginTop: hp('0.5%') },
-  fab: { position: 'absolute', right: hp('2%'), bottom: hp('2%') },
+
+  backToTop: {
+    position: 'absolute',
+    bottom: hp('1%'),
+    alignSelf: 'center',
+    paddingHorizontal: hp('2%'),
+    paddingVertical: hp('1%'),
+    borderRadius: hp('2%'),
+  },
+  backToTopText: {
+    fontSize: hp('1.6%'),
+    fontWeight: '600',
+  },
 });

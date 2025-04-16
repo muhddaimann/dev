@@ -1,14 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PagerView from 'react-native-pager-view';
 import { View, StyleSheet } from 'react-native';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CardItem from './cardItem';
+import { Flame, Dumbbell, Gift, Info } from 'lucide-react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 const data = [
-  { title: 'Free Trial Class', desc: 'Try any class free for 1 day!' },
-  { title: 'New Equipment', desc: 'Check out our new leg press machine!' },
-  { title: 'Refer & Earn', desc: 'Refer a friend and get a free session.' },
-  { title: 'Test', desc: 'Testing.' },
+  { title: 'Free Trial Class', desc: 'Try any class free for 1 day!', icon: Flame },
+  { title: 'New Equipment', desc: 'Check out our new leg press machine!', icon: Dumbbell },
+  { title: 'Refer & Earn', desc: 'Refer a friend and get a free session.', icon: Gift },
 ];
 
 export default function CardCarousel() {
@@ -31,11 +34,11 @@ export default function CardCarousel() {
         style={styles.pager}
         initialPage={0}
         ref={pagerRef}
-        onPageSelected={e => setCurrentIndex(e.nativeEvent.position)}
+        onPageSelected={(e) => setCurrentIndex(e.nativeEvent.position)}
       >
         {data.map((item, index) => (
           <View key={index} style={styles.page}>
-            <CardItem title={item.title} desc={item.desc} />
+            <CardItem title={item.title} desc={item.desc} Icon={item.icon} />
           </View>
         ))}
       </PagerView>
@@ -45,7 +48,7 @@ export default function CardCarousel() {
 
 const styles = StyleSheet.create({
   container: { alignItems: 'center', justifyContent: 'center' },
-  pager: { height: hp('12%'), width: wp('100%') },
+  pager: { height: hp('10%'), width: wp('100%') },
   page: {
     alignItems: 'center',
     justifyContent: 'center',
