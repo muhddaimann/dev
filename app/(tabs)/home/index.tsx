@@ -98,6 +98,9 @@ export default function Home() {
             <ActivityCard />
           </View>
           <View style={styles.row}>
+            <Text style={[styles.sectionTitle, { color: theme.colors.onBackground }]}>Visualization</Text>
+          </View>
+          <View style={styles.row}>
             <LineCard />
           </View>
         </View>

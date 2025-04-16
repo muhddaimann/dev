@@ -42,10 +42,13 @@ export default function WeeklyCard() {
         </View>
 
         <View style={styles.iconBlock}>
-          <TouchableOpacity onPress={() => setWeekOffset(prev => prev - 1)}>
+          <TouchableOpacity onPress={() => setWeekOffset((prev) => prev - 1)}>
             <ChevronLeft size={hp('3%')} color={theme.colors.primary} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setWeekOffset(prev => prev + 1)} style={{ marginLeft: hp('2%') }}>
+          <TouchableOpacity
+            onPress={() => setWeekOffset((prev) => prev + 1)}
+            style={{ marginLeft: hp('2%') }}
+          >
             <ChevronRight size={hp('3%')} color={theme.colors.primary} />
           </TouchableOpacity>
         </View>
@@ -73,9 +76,7 @@ export default function WeeklyCard() {
               >
                 <Text
                   style={{
-                    color: day.isToday
-                      ? theme.colors.onPrimary
-                      : theme.colors.onBackground,
+                    color: day.isToday ? theme.colors.onPrimary : theme.colors.onBackground,
                     fontWeight: '600',
                   }}
                 >
@@ -109,7 +110,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
-    width: '100%',
   },
   row: {
     flexDirection: 'row',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: hp('0.5%'),
   },
-  textBlock: { flex: 1 },
+  textBlock: { flex: 1, justifyContent: 'center' },
   iconBlock: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -146,4 +146,3 @@ const styles = StyleSheet.create({
     marginTop: hp('0.3%'),
   },
 });
-
